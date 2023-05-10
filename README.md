@@ -8,7 +8,9 @@ The goal is to allow write queries, like the following, using an declarative lan
 SELECT
   "post"."id",
   "user"."id" AS "Id of the author"
-INNER JOIN "user" "user" ON "post"."id_author" = "user"."id"
+FROM
+  "post" AS "post"
+INNER JOIN "user" AS "user" ON "post"."id_author" = "user"."id"
 WHERE
   (
     "post"."published_at" > "2023-01-01"
@@ -33,7 +35,7 @@ One of the possible definitions for the above query can be:
       {
         "value": {
           "table_column": {
-            "table": "post",
+            "table": "\"user\"",
             "column": "id"
           }
         },
@@ -44,12 +46,12 @@ One of the possible definitions for the above query can be:
     "joins": [
       {
         "mode": "inner",
-        "table": "user",
+        "table": "\"user\"",
         "on": {
           "=": [
             {
               "table_column": {
-                "table": "user",
+                "table": "\"user\"",
                 "column": "id"
               }
             },
