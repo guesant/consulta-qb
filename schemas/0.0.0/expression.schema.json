@@ -1,0 +1,598 @@
+{
+  "$id": "https://github.com/guesant/consulta-qb/blob/dev/schemas/0.0.0/expression.schema.json",
+
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+
+  "$defs": {
+    "literal": {
+      "type": "object",
+      "description": "Literal value",
+      "properties": {
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": ["value"]
+    },
+
+    "ref_literal": {
+      "type": "object",
+      "properties": {
+        "literal": {
+          "$ref": "#/$defs/literal"
+        }
+      },
+      "required": ["literal"]
+    },
+
+    "table_column": {
+      "type": "object",
+      "description": "Value of a column in a table",
+      "properties": {
+        "table": {
+          "type": "string"
+        },
+        "column": {
+          "type": "string"
+        }
+      },
+      "required": ["table", "column"]
+    },
+
+    "ref_table_column": {
+      "type": "object",
+      "properties": {
+        "table_column": {
+          "$ref": "#/$defs/table_column"
+        }
+      },
+      "required": ["table_column"]
+    },
+
+    "token": {
+      "description": "Token",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/table_column"
+        },
+        {
+          "$ref": "#/$defs/literal"
+        }
+      ]
+    },
+
+    "ref_token": {
+      "$ref": "#/$defs/token"
+    },
+
+    "op_b_and": {
+      "type": "array",
+
+      "description": "Binary AND",
+
+      "items": {
+        "$ref": "#/$defs/ref_expression"
+      },
+
+      "minItems": 2
+    },
+
+    "ref_op_b_and": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "AND": {
+              "$ref": "#/$defs/op_b_and"
+            }
+          },
+          "required": ["AND"]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "&&": {
+              "$ref": "#/$defs/op_b_and"
+            }
+          },
+          "required": ["&&"]
+        }
+      ]
+    },
+
+    "op_b_or": {
+      "type": "array",
+
+      "description": "Binary OR",
+
+      "items": {
+        "$ref": "#/$defs/ref_expression"
+      },
+
+      "minItems": 2
+    },
+
+    "ref_op_b_or": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "OR": {
+              "$ref": "#/$defs/op_b_or"
+            }
+          },
+          "required": ["OR"]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "||": {
+              "$ref": "#/$defs/op_b_or"
+            }
+          },
+          "required": ["||"]
+        }
+      ]
+    },
+
+    "op_b_not": {
+      "description": "Binary NOT",
+
+      "$ref": "#/$defs/ref_expression"
+    },
+
+    "ref_op_b_not": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "NOT": {
+              "$ref": "#/$defs/op_b_not"
+            }
+          },
+          "required": ["NOT"]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "!": {
+              "$ref": "#/$defs/op_b_not"
+            }
+          },
+          "required": ["!"]
+        }
+      ]
+    },
+
+    "cmp_eq": {
+      "type": "array",
+
+      "description": "Equal",
+
+      "items": {
+        "$ref": "#/$defs/ref_expression"
+      },
+
+      "minItems": 2,
+      "maxItems": 2
+    },
+
+    "ref_cmp_eq": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "EQ": {
+              "$ref": "#/$defs/cmp_eq"
+            }
+          },
+          "required": ["EQ"]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "=": {
+              "$ref": "#/$defs/cmp_eq"
+            }
+          },
+          "required": ["="]
+        }
+      ]
+    },
+
+    "cmp_neq": {
+      "type": "array",
+
+      "description": "Not equal",
+
+      "items": {
+        "$ref": "#/$defs/ref_expression"
+      },
+
+      "minItems": 2,
+      "maxItems": 2
+    },
+
+    "ref_cmp_neq": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "NEQ": {
+              "$ref": "#/$defs/cmp_neq"
+            }
+          },
+          "required": ["NEQ"]
+        },
+
+        {
+          "type": "object",
+          "properties": {
+            "!=": {
+              "$ref": "#/$defs/cmp_neq"
+            }
+          },
+          "required": ["!="]
+        },
+
+        {
+          "type": "object",
+          "properties": {
+            "<>": {
+              "$ref": "#/$defs/cmp_neq"
+            }
+          },
+          "required": ["<>"]
+        }
+      ]
+    },
+
+    "cmp_lt": {
+      "type": "array",
+
+      "description": "Less than",
+
+      "items": {
+        "$ref": "#/$defs/ref_expression"
+      },
+
+      "minItems": 2,
+      "maxItems": 2
+    },
+
+    "ref_cmp_lt": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "LT": {
+              "$ref": "#/$defs/cmp_lt"
+            }
+          },
+          "required": ["LT"]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "<": {
+              "$ref": "#/$defs/cmp_lt"
+            }
+          },
+          "required": ["<"]
+        }
+      ]
+    },
+
+    "cmp_lte": {
+      "type": "array",
+      "description": "Less than or equal",
+
+      "items": {
+        "$ref": "#/$defs/ref_expression"
+      },
+
+      "minItems": 2,
+      "maxItems": 2
+    },
+
+    "ref_cmp_lte": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "LTE": {
+              "$ref": "#/$defs/cmp_lte"
+            }
+          },
+          "required": ["LTE"]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "<=": {
+              "$ref": "#/$defs/cmp_lte"
+            }
+          },
+          "required": ["<="]
+        }
+      ]
+    },
+
+    "cmp_gt": {
+      "type": "array",
+      "description": "Greater than",
+
+      "items": {
+        "$ref": "#/$defs/ref_expression"
+      },
+
+      "minItems": 2,
+      "maxItems": 2
+    },
+
+    "ref_cmp_gt": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "GT": {
+              "$ref": "#/$defs/cmp_gt"
+            }
+          },
+          "required": ["GT"]
+        },
+        {
+          "type": "object",
+          "properties": {
+            ">": {
+              "$ref": "#/$defs/cmp_gt"
+            }
+          },
+          "required": [">"]
+        }
+      ]
+    },
+
+    "cmp_gte": {
+      "type": "array",
+      "description": "Greater than or equal",
+
+      "items": {
+        "$ref": "#/$defs/ref_expression"
+      },
+
+      "minItems": 2,
+      "maxItems": 2
+    },
+
+    "ref_cmp_gte": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "GTE": {
+              "$ref": "#/$defs/cmp_gte"
+            }
+          },
+          "required": ["GTE"]
+        },
+        {
+          "type": "object",
+          "properties": {
+            ">=": {
+              "$ref": "#/$defs/cmp_gte"
+            }
+          },
+          "required": [">="]
+        }
+      ]
+    },
+
+    "cmp_between": {
+      "type": "object",
+
+      "description": "Between",
+
+      "properties": {
+        "value": {
+          "$ref": "#/$defs/ref_expression"
+        },
+
+        "start": {
+          "$ref": "#/$defs/ref_expression"
+        },
+
+        "end": {
+          "$ref": "#/$defs/ref_expression"
+        }
+      },
+
+      "required": ["value", "start", "end"]
+    },
+
+    "ref_cmp_between": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "BETWEEN": {
+              "$ref": "#/$defs/cmp_between"
+            }
+          },
+          "required": ["BETWEEN"]
+        }
+      ]
+    },
+
+    "cmp_like": {
+      "type": "object",
+
+      "description": "Like",
+
+      "properties": {
+        "value": {
+          "$ref": "#/$defs/ref_expression"
+        },
+
+        "pattern": {
+          "$ref": "#/$defs/ref_literal"
+        }
+      }
+    },
+
+    "ref_cmp_like": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "LIKE": {
+              "$ref": "#/$defs/cmp_like"
+            }
+          },
+          "required": ["LIKE"]
+        }
+      ]
+    },
+
+    "cmp_in": {
+      "type": "object",
+
+      "description": "In",
+
+      "properties": {
+        "value": {
+          "$ref": "#/$defs/ref_expression"
+        },
+
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ref_expression"
+          }
+        }
+      }
+    },
+
+    "ref_cmp_in": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "IN": {
+              "$ref": "#/$defs/cmp_in"
+            }
+          },
+          "required": ["IN"]
+        }
+      ]
+    },
+
+    "cmp_is_null": {
+      "type": "object",
+
+      "description": "Is null",
+
+      "properties": {
+        "value": {
+          "$ref": "#/$defs/ref_expression"
+        }
+      }
+    },
+
+    "ref_cmp_is_null": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "IS NULL": {
+              "$ref": "#/$defs/cmp_is_null"
+            }
+          },
+          "required": ["IS NULL"]
+        }
+      ]
+    },
+
+    "cmp_is_not_null": {
+      "type": "object",
+
+      "description": "Is not null",
+
+      "properties": {
+        "value": {
+          "$ref": "#/$defs/ref_expression"
+        }
+      }
+    },
+
+    "ref_cmp_is_not_null": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "IS NOT NULL": {
+              "$ref": "#/$defs/cmp_is_not_null"
+            }
+          },
+          "required": ["IS NOT NULL"]
+        }
+      ]
+    },
+
+    "expression": {
+      "description": "Expression",
+
+      "oneOf": [
+        {
+          "$ref": "#/$defs/ref_op_b_and"
+        },
+        {
+          "$ref": "#/$defs/ref_op_b_or"
+        },
+        {
+          "$ref": "#/$defs/ref_op_b_not"
+        },
+        {
+          "$ref": "#/$defs/ref_cmp_eq"
+        },
+        {
+          "$ref": "#/$defs/ref_cmp_neq"
+        },
+        {
+          "$ref": "#/$defs/ref_cmp_lt"
+        },
+        {
+          "$ref": "#/$defs/ref_cmp_lte"
+        },
+        {
+          "$ref": "#/$defs/ref_cmp_gt"
+        },
+        {
+          "$ref": "#/$defs/ref_cmp_gte"
+        },
+        {
+          "$ref": "#/$defs/ref_cmp_between"
+        },
+        {
+          "$ref": "#/$defs/ref_cmp_like"
+        },
+        {
+          "$ref": "#/$defs/ref_cmp_in"
+        },
+        {
+          "$ref": "#/$defs/ref_cmp_is_null"
+        },
+        {
+          "$ref": "#/$defs/ref_cmp_is_not_null"
+        },
+        {
+          "$ref": "#/$defs/ref_token"
+        }
+      ]
+    },
+
+    "ref_expression": {
+      "$ref": "#/$defs/expression"
+    }
+  }
+}
