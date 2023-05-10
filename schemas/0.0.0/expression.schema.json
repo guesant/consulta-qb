@@ -4,6 +4,24 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
 
   "$defs": {
+    "symbol": {
+      "type": "string",
+
+      "description": "Symbol",
+
+      "enum": ["*"]
+    },
+
+    "ref_symbol": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "$ref": "#/$defs/symbol"
+        }
+      },
+      "required": ["symbol"]
+    },
+
     "literal": {
       "type": "object",
       "description": "Literal value",
@@ -23,6 +41,27 @@
         }
       },
       "required": ["literal"]
+    },
+
+    "param": {
+      "type": "object",
+      "description": "Parameter",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": ["name"]
+    },
+
+    "ref_param": {
+      "type": "object",
+      "properties": {
+        "param": {
+          "$ref": "#/$defs/param"
+        }
+      },
+      "required": ["param"]
     },
 
     "table_column": {
@@ -53,10 +92,16 @@
       "description": "Token",
       "oneOf": [
         {
-          "$ref": "#/$defs/table_column"
+          "$ref": "#/$defs/ref_table_column"
         },
         {
-          "$ref": "#/$defs/literal"
+          "$ref": "#/$defs/ref_literal"
+        },
+        {
+          "$ref": "#/$defs/ref_param"
+        },
+        {
+          "$ref": "#/$defs/ref_symbol"
         }
       ]
     },

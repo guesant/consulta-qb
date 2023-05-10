@@ -1,0 +1,115 @@
+{
+  "$id": "https://github.com/guesant/consulta-qb/blob/dev/schemas/0.0.0/query.schema.json",
+
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+
+  "$defs": {
+    "ref_expression": {
+      "$ref": "https://github.com/guesant/consulta-qb/blob/dev/schemas/0.0.0/expression.schema.json#/$defs/ref_expression"
+    },
+
+    "ref_token": {
+      "$ref": "https://github.com/guesant/consulta-qb/blob/dev/schemas/0.0.0/expression.schema.json#/$defs/ref_token"
+    },
+
+    "select": {
+      "type": "object",
+
+      "properties": {
+        "columns": {
+          "type": "array",
+
+          "items": {
+            "$ref": "#/$defs/ref_token"
+          },
+
+          "minItems": 1
+        },
+
+        "from": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "table": {
+                  "type": "string"
+                },
+                "alias": {
+                  "type": "string"
+                }
+              },
+              "required": ["table"]
+            }
+          ]
+        },
+
+        "joins": {
+          "type": "array",
+
+          "items": {
+            "type": "object",
+
+            "properties": {
+              "mode": {
+                "type": "string",
+                "enum": ["inner", "left", "right"]
+              },
+
+              "table": {
+                "type": "string"
+              },
+
+              "alias": {
+                "type": "string"
+              },
+
+              "on": {
+                "oneOf": [
+                  {
+                    "$ref": "#/$defs/ref_expression"
+                  }
+                ]
+              }
+            },
+            "required": ["mode", "table", "on"]
+          }
+        },
+
+        "where": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ref_expression"
+            }
+          ]
+        }
+      }
+    },
+
+    "ref_select": {
+      "type": "object",
+
+      "properties": {
+        "select": {
+          "$ref": "#/$defs/select"
+        }
+      },
+
+      "required": ["select"]
+    },
+
+    "query": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/ref_select"
+        }
+      ]
+    },
+
+    "ref_query": {
+      "$ref": "#/$defs/query"
+    }
+  }
+}
