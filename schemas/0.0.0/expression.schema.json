@@ -106,6 +106,17 @@
       ]
     },
 
+    "ref_data": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/ref_table_column"
+        },
+        {
+          "$ref": "#/$defs/ref_symbol"
+        }
+      ]
+    },
+
     "ref_token": {
       "$ref": "#/$defs/token"
     },

@@ -28,12 +28,16 @@ One of the possible definitions for the above query can be:
         "table_column": {
           "table": "post",
           "column": "id"
-        },
-        "table_column": {
-          "table": "post",
-          "column": "id",
-          "alias": "Id of the author"
         }
+      },
+      {
+        "value": {
+          "table_column": {
+            "table": "post",
+            "column": "id"
+          }
+        },
+        "alias": "Id of the author"
       }
     ],
 

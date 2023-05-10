@@ -8,8 +8,29 @@
       "$ref": "https://github.com/guesant/consulta-qb/blob/dev/schemas/0.0.0/expression.schema.json#/$defs/ref_expression"
     },
 
-    "ref_token": {
-      "$ref": "https://github.com/guesant/consulta-qb/blob/dev/schemas/0.0.0/expression.schema.json#/$defs/ref_token"
+    "ref_data": {
+      "$ref": "https://github.com/guesant/consulta-qb/blob/dev/schemas/0.0.0/expression.schema.json#/$defs/ref_data"
+    },
+
+    "column": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/ref_data"
+        },
+        {
+          "type": "object",
+
+          "properties": {
+            "value": {
+              "$ref": "#/$defs/ref_data"
+            },
+
+            "alias": {
+              "type": "string"
+            }
+          }
+        }
+      ]
     },
 
     "select": {
@@ -20,7 +41,7 @@
           "type": "array",
 
           "items": {
-            "$ref": "#/$defs/ref_token"
+            "$ref": "#/$defs/column"
           },
 
           "minItems": 1
