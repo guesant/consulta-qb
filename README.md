@@ -2,6 +2,8 @@
 
 The consulta-qb is a specification for write SQL queries using JSON.
 
+### Goals
+
 The goal is to allow write queries, like the following, using an declarative language.
 
 ```sql
@@ -81,6 +83,12 @@ One of the possible definitions for the above query can be:
   }
 }
 ```
+
+### Why?
+
+It's true that the declarative ways adds an overhead (larger size, too verbose etc).
+
+On other hand, in the cases of when is needed to allow queries from user input in some way, it's trustworthy to specify what the query can do and not. This could prevent malicious and unintentional injections.
 
 ## License
 
