@@ -1,15 +1,15 @@
 {
-  "$id": "https://github.com/guesant/consulta-qb/blob/dev/schemas/0.0.0/query.schema.json",
+  "$id": "https://raw.githubusercontent.com/guesant/consulta-qb/dev/schemas/0.0.0/query.schema.json",
 
   "$schema": "https://json-schema.org/draft/2020-12/schema",
 
   "$defs": {
     "ref_expression": {
-      "$ref": "https://github.com/guesant/consulta-qb/blob/dev/schemas/0.0.0/expression.schema.json#/$defs/ref_expression"
+      "$ref": "https://raw.githubusercontent.com/guesant/consulta-qb/dev/schemas/0.0.0/expression.schema.json#/$defs/ref_expression"
     },
 
     "ref_data": {
-      "$ref": "https://github.com/guesant/consulta-qb/blob/dev/schemas/0.0.0/expression.schema.json#/$defs/ref_data"
+      "$ref": "https://raw.githubusercontent.com/guesant/consulta-qb/dev/schemas/0.0.0/expression.schema.json#/$defs/ref_data"
     },
 
     "column": {

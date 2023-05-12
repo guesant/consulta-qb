@@ -1,5 +1,5 @@
 {
-  "$id": "https://github.com/guesant/consulta-qb/blob/dev/schemas/0.0.0/expression.schema.json",
+  "$id": "https://raw.githubusercontent.com/guesant/consulta-qb/dev/schemas/0.0.0/expression.schema.json",
 
   "$schema": "https://json-schema.org/draft/2020-12/schema",
 
