@@ -23,7 +23,6 @@ The goal of consulta-qb is allow to write relational database queries using a de
             "column": "id"
           }
         },
-
         "alias": "Id of the author"
       }
     ],
@@ -50,13 +49,16 @@ The goal of consulta-qb is allow to write relational database queries using a de
         }
       }
     ],
+
     "where": {
       ">": [
         {
           "column_value": {
             "table": "post",
             "column": "published_at"
-          },
+          }
+        },
+        {
           "literal": {
             "value": "2023-01-01"
           }
