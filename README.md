@@ -1,26 +1,8 @@
 # consulta-qb
 
-The consulta-qb is a specification for write SQL queries using JSON.
+The goal of consulta-qb is allow to write relational database queries using a declarative language.
 
-### Goals
-
-The goal is to allow write queries, like the following, using an declarative language.
-
-```sql
-SELECT
-  "post"."id",
-  "user"."id" AS "Id of the author"
-FROM
-  "post" AS "post"
-INNER JOIN "user" AS "user" ON "post"."id_author" = "user"."id"
-WHERE
-  (
-    "post"."published_at" > "2023-01-01"
-  )
-;
-```
-
-One of the possible definitions for the above query can be:
+## Examples
 
 ```json
 {
@@ -29,18 +11,19 @@ One of the possible definitions for the above query can be:
 
     "columns": [
       {
-        "table_column": {
+        "column_value": {
           "table": "post",
           "column": "id"
         }
       },
       {
         "value": {
-          "table_column": {
+          "column_value": {
             "table": "\"user\"",
             "column": "id"
           }
         },
+
         "alias": "Id of the author"
       }
     ],
@@ -52,13 +35,13 @@ One of the possible definitions for the above query can be:
         "on": {
           "=": [
             {
-              "table_column": {
+              "column_value": {
                 "table": "\"user\"",
                 "column": "id"
               }
             },
             {
-              "table_column": {
+              "column_value": {
                 "table": "post",
                 "column": "id_author"
               }
@@ -70,7 +53,7 @@ One of the possible definitions for the above query can be:
     "where": {
       ">": [
         {
-          "table_column": {
+          "column_value": {
             "table": "post",
             "column": "published_at"
           },

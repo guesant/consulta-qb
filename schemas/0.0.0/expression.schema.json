@@ -1,5 +1,5 @@
 {
-  "$id": "https://raw.githubusercontent.com/guesant/consulta-qb/dev/schemas/0.0.0/expression.schema.json",
+  "$id": "https://guesant.github.io/consulta-qb/schemas/0.0.0/expression.schema.json",
 
   "$schema": "https://json-schema.org/draft/2020-12/schema",
 
@@ -64,35 +64,48 @@
       "required": ["param"]
     },
 
-    "table_column": {
+    "table_name": {
+      "type": "string",
+      "pattern": "^(\"[a-zA-Z][a-zA-Z0-9_]{0,127}\"|[a-zA-Z][a-zA-Z0-9_]{0,127})$",
+      "minLength": 1
+    },
+
+    "column_name": {
+      "type": "string",
+      "pattern": "^[a-zA-Z][a-zA-Z0-9_]{0,127}$",
+      "minLength": 1
+    },
+
+    "column_value": {
       "type": "object",
       "description": "Value of a column in a table",
       "properties": {
         "table": {
-          "type": "string"
+          "ref": "#/$defs/table_name"
         },
         "column": {
-          "type": "string"
+          "ref": "#/$defs/column_name"
         }
       },
       "required": ["table", "column"]
     },
 
-    "ref_table_column": {
+    "ref_column_value": {
       "type": "object",
       "properties": {
-        "table_column": {
-          "$ref": "#/$defs/table_column"
+        "column_value": {
+          "$ref": "#/$defs/column_value"
         }
       },
-      "required": ["table_column"]
+      "required": ["column_value"]
     },
 
     "token": {
       "description": "Token",
+
       "oneOf": [
         {
-          "$ref": "#/$defs/ref_table_column"
+          "$ref": "#/$defs/ref_column_value"
         },
         {
           "$ref": "#/$defs/ref_literal"
@@ -106,19 +119,19 @@
       ]
     },
 
-    "ref_data": {
+    "ref_token": {
+      "$ref": "#/$defs/token"
+    },
+
+    "ref_value": {
       "oneOf": [
         {
-          "$ref": "#/$defs/ref_table_column"
+          "$ref": "#/$defs/ref_column_value"
         },
         {
           "$ref": "#/$defs/ref_symbol"
         }
       ]
-    },
-
-    "ref_token": {
-      "$ref": "#/$defs/token"
     },
 
     "op_b_and": {

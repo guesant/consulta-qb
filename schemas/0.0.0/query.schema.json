@@ -1,28 +1,21 @@
 {
-  "$id": "https://raw.githubusercontent.com/guesant/consulta-qb/dev/schemas/0.0.0/query.schema.json",
+  "$id": "https://guesant.github.io/consulta-qb/schemas/0.0.0/query.schema.json",
 
   "$schema": "https://json-schema.org/draft/2020-12/schema",
 
   "$defs": {
-    "ref_expression": {
-      "$ref": "https://raw.githubusercontent.com/guesant/consulta-qb/dev/schemas/0.0.0/expression.schema.json#/$defs/ref_expression"
-    },
-
-    "ref_data": {
-      "$ref": "https://raw.githubusercontent.com/guesant/consulta-qb/dev/schemas/0.0.0/expression.schema.json#/$defs/ref_data"
-    },
-
     "column": {
       "oneOf": [
         {
-          "$ref": "#/$defs/ref_data"
+          "$ref": "https://guesant.github.io/consulta-qb/schemas/0.0.0/expression.schema.json#/$defs/ref_value"
         },
+
         {
           "type": "object",
 
           "properties": {
             "value": {
-              "$ref": "#/$defs/ref_data"
+              "$ref": "https://guesant.github.io/consulta-qb/schemas/0.0.0/expression.schema.json#/$defs/ref_value"
             },
 
             "alias": {
@@ -50,13 +43,13 @@
         "from": {
           "oneOf": [
             {
-              "type": "string"
+              "ref": "https://guesant.github.io/consulta-qb/schemas/0.0.0/expression.schema.json#/$defs/table_name"
             },
             {
               "type": "object",
               "properties": {
                 "table": {
-                  "type": "string"
+                  "ref": "https://guesant.github.io/consulta-qb/schemas/0.0.0/expression.schema.json#/$defs/table_name"
                 },
                 "alias": {
                   "type": "string"
@@ -80,7 +73,7 @@
               },
 
               "table": {
-                "type": "string"
+                "ref": "https://guesant.github.io/consulta-qb/schemas/0.0.0/expression.schema.json#/$defs/table_name"
               },
 
               "alias": {
@@ -90,7 +83,7 @@
               "on": {
                 "oneOf": [
                   {
-                    "$ref": "#/$defs/ref_expression"
+                    "$ref": "https://guesant.github.io/consulta-qb/schemas/0.0.0/expression.schema.json#/$defs/ref_expression"
                   }
                 ]
               }
@@ -102,11 +95,12 @@
         "where": {
           "oneOf": [
             {
-              "$ref": "#/$defs/ref_expression"
+              "$ref": "https://guesant.github.io/consulta-qb/schemas/0.0.0/expression.schema.json#/$defs/ref_expression"
             }
           ]
         }
-      }
+      },
+      "required": ["columns", "from", "where"]
     },
 
     "ref_select": {
