@@ -27,7 +27,20 @@
       "description": "Literal value",
       "properties": {
         "value": {
-          "type": "string"
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       },
       "required": ["value"]
@@ -35,11 +48,13 @@
 
     "ref_literal": {
       "type": "object",
+
       "properties": {
         "literal": {
           "$ref": "#/$defs/literal"
         }
       },
+
       "required": ["literal"]
     },
 
