@@ -1,0 +1,18 @@
+{
+  "$id": "https://guesant.github.io/consulta-qb/schemas/0.0.0/constraints.schema.json",
+
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+
+  "$defs": {
+    "table_name": {
+      "type": "string",
+      "pattern": "^(\"[a-zA-Z][a-zA-Z0-9_]{0,127}\"|[a-zA-Z][a-zA-Z0-9_]{0,127})$",
+      "minLength": 1
+    },
+    "column_name": {
+      "type": "string",
+      "pattern": "^[a-zA-Z][a-zA-Z0-9_]{0,127}$",
+      "minLength": 1
+    }
+  }
+}

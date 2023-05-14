@@ -8,60 +8,55 @@ The goal of consulta-qb is allow to write relational database queries using a de
 {
   "select": {
     "from": "post",
-
     "columns": [
       {
-        "column_value": {
+        "select_column": {
           "table": "post",
-          "column": "id"
+          "name": "id"
         }
       },
       {
         "value": {
-          "column_value": {
+          "select_column": {
             "table": "\"user\"",
-            "column": "id"
+            "name": "id"
           }
         },
-        "alias": "Id of the author"
+        "as": "Id of the author"
       }
     ],
-
     "joins": [
       {
         "mode": "inner",
         "table": "\"user\"",
         "on": {
-          "=": [
+          "==": [
             {
-              "column_value": {
+              "select_column": {
                 "table": "\"user\"",
-                "column": "id"
+                "name": "id"
               }
             },
             {
-              "column_value": {
+              "select_column": {
                 "table": "post",
-                "column": "id_author"
+                "name": "id_author"
               }
             }
           ]
         }
       }
     ],
-
     "where": {
       ">": [
         {
-          "column_value": {
+          "select_column": {
             "table": "post",
-            "column": "published_at"
+            "name": "published_at"
           }
         },
         {
-          "literal": {
-            "value": "2023-01-01"
-          }
+          "literal": "2023-01-01"
         }
       ]
     }
