@@ -1,4 +1,4 @@
-import { IExpression } from "./IExpression";
+import {IExpression} from "./IExpression";
 
 export type IExpressionComparisonLessThanOrEqual = [IExpression, IExpression];
 

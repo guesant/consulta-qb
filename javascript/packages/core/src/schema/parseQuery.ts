@@ -1,4 +1,4 @@
-import { validateQuery } from "./validateQuery";
+import {validateQuery} from "./validateQuery";
 
 export const parseQuery = (data: any) => {
   const result = validateQuery(data);

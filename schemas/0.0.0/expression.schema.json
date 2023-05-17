@@ -29,10 +29,10 @@
         }
       },
 
-      "additionalProperties": false,
 
       "required": ["value", "start", "end"]
     },
+
     "ref_cmp_between": {
       "oneOf": [
         {
@@ -49,7 +49,6 @@
             }
           },
 
-          "additionalProperties": false,
 
           "required": ["BETWEEN"]
         }
@@ -68,6 +67,7 @@
       "minItems": 2,
       "maxItems": 2
     },
+
     "ref_cmp_eq": {
       "oneOf": [
         {
@@ -84,7 +84,6 @@
             }
           },
 
-          "additionalProperties": false,
 
           "required": ["=="]
         }
@@ -102,6 +101,7 @@
       "minItems": 2,
       "maxItems": 2
     },
+
     "ref_cmp_gt": {
       "oneOf": [
         {
@@ -118,7 +118,6 @@
             }
           },
 
-          "additionalProperties": false,
 
           "required": [">"]
         }
@@ -136,6 +135,7 @@
       "minItems": 2,
       "maxItems": 2
     },
+
     "ref_cmp_gte": {
       "oneOf": [
         {
@@ -152,7 +152,6 @@
             }
           },
 
-          "additionalProperties": false,
 
           "required": [">="]
         }
@@ -185,6 +184,7 @@
 
       "additionalProperties": false
     },
+
     "ref_cmp_in": {
       "oneOf": [
         {
@@ -202,7 +202,6 @@
             }
           },
 
-          "additionalProperties": false,
 
           "required": ["IN"]
         }
@@ -232,7 +231,6 @@
             }
           },
 
-          "additionalProperties": false,
 
           "required": ["IS NOT NULL"]
         }
@@ -243,6 +241,7 @@
       "description": "Is null",
       "$ref": "#/$defs/ref_expression"
     },
+
     "ref_cmp_is_null": {
       "oneOf": [
         {
@@ -259,7 +258,6 @@
             }
           },
 
-          "additionalProperties": false,
 
           "required": ["IS NULL"]
         }
@@ -278,6 +276,7 @@
       "minItems": 2,
       "maxItems": 2
     },
+
     "ref_cmp_lt": {
       "oneOf": [
         {
@@ -294,7 +293,6 @@
             }
           },
 
-          "additionalProperties": false,
 
           "required": ["<"]
         }
@@ -312,6 +310,7 @@
       "minItems": 2,
       "maxItems": 2
     },
+
     "ref_cmp_lte": {
       "oneOf": [
         {
@@ -328,7 +327,6 @@
             }
           },
 
-          "additionalProperties": false,
 
           "required": ["<="]
         }
@@ -358,6 +356,7 @@
 
       "additionalProperties": false
     },
+
     "ref_cmp_like": {
       "oneOf": [
         {
@@ -374,7 +373,6 @@
             }
           },
 
-          "additionalProperties": false,
 
           "required": ["LIKE"]
         }
@@ -393,6 +391,7 @@
       "minItems": 2,
       "maxItems": 2
     },
+
     "ref_cmp_neq": {
       "oneOf": [
         {
@@ -409,7 +408,6 @@
             }
           },
 
-          "additionalProperties": false,
 
           "required": ["!="]
         },
@@ -428,7 +426,6 @@
             }
           },
 
-          "additionalProperties": false,
 
           "required": ["<>"]
         }
@@ -453,6 +450,7 @@
         }
       ]
     },
+
     "ref_literal": {
       "type": "object",
 
@@ -468,7 +466,6 @@
         }
       },
 
-      "additionalProperties": false,
 
       "required": ["literal"]
     },
@@ -484,6 +481,7 @@
 
       "minItems": 2
     },
+
     "ref_op_and": {
       "oneOf": [
         {
@@ -500,7 +498,6 @@
             }
           },
 
-          "additionalProperties": false,
 
           "required": ["AND"]
         },
@@ -518,7 +515,6 @@
             }
           },
 
-          "additionalProperties": false,
 
           "required": ["&&"]
         }
@@ -529,6 +525,7 @@
       "description": "Binary NOT",
       "$ref": "#/$defs/ref_expression"
     },
+
     "ref_op_not": {
       "oneOf": [
         {
@@ -545,7 +542,6 @@
             }
           },
 
-          "additionalProperties": false,
 
           "required": ["NOT"]
         },
@@ -563,7 +559,6 @@
             }
           },
 
-          "additionalProperties": false,
 
           "required": ["!"]
         }
@@ -581,6 +576,7 @@
 
       "minItems": 2
     },
+
     "ref_op_or": {
       "oneOf": [
         {
@@ -597,7 +593,6 @@
             }
           },
 
-          "additionalProperties": false,
 
           "required": ["OR"]
         },
@@ -615,7 +610,6 @@
             }
           },
 
-          "additionalProperties": false,
 
           "required": ["||"]
         }
@@ -638,10 +632,10 @@
         }
       },
 
-      "additionalProperties": false,
 
       "required": ["name"]
     },
+
     "ref_param": {
       "type": "object",
 
@@ -656,7 +650,6 @@
         }
       },
 
-      "additionalProperties": false,
 
       "required": ["param"]
     },
@@ -666,6 +659,7 @@
       "description": "Symbol",
       "enum": ["*"]
     },
+
     "ref_symbol": {
       "type": "object",
 
@@ -680,7 +674,6 @@
         }
       },
 
-      "additionalProperties": false,
 
       "required": ["symbol"]
     },
@@ -727,10 +720,9 @@
         }
       },
 
-      "additionalProperties": false,
-
       "required": ["name"]
     },
+
     "ref_select_column": {
       "type": "object",
 
@@ -746,7 +738,6 @@
         }
       },
 
-      "additionalProperties": false,
 
       "required": ["select_column"]
     },
@@ -802,6 +793,7 @@
         }
       ]
     },
+
     "ref_expression": {
       "$ref": "#/$defs/expression"
     }

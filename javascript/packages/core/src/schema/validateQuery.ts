@@ -1,13 +1,15 @@
-import {ajv} from "../helpers/ajv";
-import {IQuery, IQueryRef} from "../interfaces";
-import {SCHEMA_QUERY} from "../helpers/tokens";
+import {getAjv} from "./ajv";
+import {IQueryRef} from "../interfaces";
+import {SCHEMA_QUERY} from "../helpers/raw-schemas";
 
 export const validateQuery = (data: any) => {
+  const ajv = getAjv();
+
   const validate = ajv.getSchema(SCHEMA_QUERY)!;
 
   const dt = structuredClone(data);
 
-  if(validate(dt)) {
+  if (validate(dt)) {
     return {
       valid: true,
       data: dt as IQueryRef,

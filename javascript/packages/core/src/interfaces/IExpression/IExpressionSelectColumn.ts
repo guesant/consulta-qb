@@ -1,4 +1,4 @@
-import { IConstraintColumnName, IConstraintTableName } from "../IConstraints";
+import {IConstraintColumnName, IConstraintTableName} from "../IConstraints";
 
 export type IExpressionSelectColumn = {
   type: "select_column";

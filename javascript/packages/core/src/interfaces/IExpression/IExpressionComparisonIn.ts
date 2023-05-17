@@ -1,4 +1,4 @@
-import { IExpression } from "./IExpression";
+import {IExpression} from "./IExpression";
 
 export type IExpressionComparisonIn = {
   type: "cmp_in";

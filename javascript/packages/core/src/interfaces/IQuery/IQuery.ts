@@ -1,4 +1,4 @@
-import { IQuerySelectRef } from "./IQuerySelect";
+import {IQuerySelectRef} from "./IQuerySelect";
 
 export type IQuery = IQuerySelectRef;
 

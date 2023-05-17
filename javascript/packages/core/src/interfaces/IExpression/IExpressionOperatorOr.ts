@@ -1,4 +1,4 @@
-import { IExpression } from "./IExpression";
+import {IExpression} from "./IExpression";
 
 export type IExpressionOperatorOr = {
   items: [IExpression, IExpression];
@@ -6,10 +6,10 @@ export type IExpressionOperatorOr = {
 
 export type IExpressionOperatorOrRef =
   | {
-      ref: "op_or";
-      OR: IExpressionOperatorOr;
-    }
+  ref: "op_or";
+  OR: IExpressionOperatorOr;
+}
   | {
-      ref: "op_or";
-      "||": IExpressionOperatorOr;
-    };
+  ref: "op_or";
+  "||": IExpressionOperatorOr;
+};
