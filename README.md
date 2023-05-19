@@ -10,14 +10,14 @@ The goal of consulta-qb is allow to write relational database queries using a de
     "from": "post",
     "columns": [
       {
-        "select_column": {
+        "column": {
           "table": "post",
           "name": "id"
         }
       },
       {
         "value": {
-          "select_column": {
+          "column": {
             "table": "\"user\"",
             "name": "id"
           }
@@ -32,13 +32,13 @@ The goal of consulta-qb is allow to write relational database queries using a de
         "on": {
           "==": [
             {
-              "select_column": {
+              "column": {
                 "table": "\"user\"",
                 "name": "id"
               }
             },
             {
-              "select_column": {
+              "column": {
                 "table": "post",
                 "name": "id_author"
               }
@@ -50,7 +50,7 @@ The goal of consulta-qb is allow to write relational database queries using a de
     "where": {
       ">": [
         {
-          "select_column": {
+          "column": {
             "table": "post",
             "name": "published_at"
           }

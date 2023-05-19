@@ -2,10 +2,7 @@
   "compilerOptions": {
     "target": "es2016",
     "module": "esnext",
-    "lib": [
-      "EsNext",
-      "dom"
-    ],
+    "lib": ["EsNext", "dom"],
     "moduleResolution": "NodeNext",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,

@@ -3,127 +3,93 @@
 
   "$schema": "https://json-schema.org/draft/2020-12/schema",
 
-  "$ref": "#/$defs/ref_query",
+  "$ref": "#/$defs/query",
 
   "$defs": {
-    "select_column": {
-      "oneOf": [
-        {
-          "$ref": "https://guesant.github.io/consulta-qb/schemas/0.0.0/expression.schema.json#/$defs/ref_value"
-        },
-
-        {
-          "type": "object",
-
-          "properties": {
-            "value": {
-              "$ref": "https://guesant.github.io/consulta-qb/schemas/0.0.0/expression.schema.json#/$defs/ref_value"
-            },
-
-            "as": {
-              "type": "string"
-            }
-          },
-
-          "additionalProperties": false
-        }
-      ]
-    },
-
     "select": {
       "type": "object",
 
       "properties": {
-        "type": {
-          "type": "string",
-          "enum": ["select"],
-          "default": "select"
-        },
+        "select": {
+          "type": "object",
 
-        "from": {
-          "oneOf": [
-            {
-              "$ref": "https://guesant.github.io/consulta-qb/schemas/0.0.0/constraints.schema.json#/$defs/table_name"
-            },
-            {
-              "type": "object",
-              "properties": {
-                "table": {
+          "properties": {
+            "from": {
+              "oneOf": [
+                {
                   "$ref": "https://guesant.github.io/consulta-qb/schemas/0.0.0/constraints.schema.json#/$defs/table_name"
                 },
-                "as": {
-                  "type": "string"
+                {
+                  "type": "object",
+
+                  "properties": {
+                    "table": {
+                      "$ref": "https://guesant.github.io/consulta-qb/schemas/0.0.0/constraints.schema.json#/$defs/table_name"
+                    },
+
+                    "as": {
+                      "type": "string"
+                    }
+                  },
+
+                  "additionalProperties": false,
+
+                  "required": ["table"]
                 }
+              ]
+            },
+
+            "columns": {
+              "type": "array",
+
+              "items": {
+                "$ref": "#/$defs/select_column"
               },
-              "additionalProperties": false,
-              "required": ["table"]
+
+              "minItems": 1
+            },
+
+            "joins": {
+              "type": "array",
+
+              "items": {
+                "type": "object",
+
+                "properties": {
+                  "mode": {
+                    "type": "string",
+                    "enum": ["inner", "left", "right", "full"]
+                  },
+
+                  "table": {
+                    "$ref": "https://guesant.github.io/consulta-qb/schemas/0.0.0/constraints.schema.json#/$defs/table_name"
+                  },
+
+                  "as": {
+                    "type": "string"
+                  },
+
+                  "on": {
+                    "$ref": "https://guesant.github.io/consulta-qb/schemas/0.0.0/expression.schema.json#/$defs/expression"
+                  }
+                },
+
+                "additionalProperties": false,
+
+                "required": ["mode", "table", "on"]
+              },
+
+              "minItems": 1
+            },
+
+            "where": {
+              "$ref": "https://guesant.github.io/consulta-qb/schemas/0.0.0/expression.schema.json#/$defs/expression"
             }
-          ]
-        },
-
-        "columns": {
-          "type": "array",
-
-          "items": {
-            "$ref": "#/$defs/select_column"
           },
 
-          "minItems": 1
-        },
+          "additionalProperties": false,
 
-        "joins": {
-          "type": "array",
-
-          "items": {
-            "type": "object",
-
-            "properties": {
-              "mode": {
-                "type": "string",
-                "enum": ["inner", "left", "right", "full"]
-              },
-
-              "table": {
-                "$ref": "https://guesant.github.io/consulta-qb/schemas/0.0.0/constraints.schema.json#/$defs/table_name"
-              },
-
-              "as": {
-                "type": "string"
-              },
-
-              "on": {
-                "anyOf": [
-                  {
-                    "$ref": "https://guesant.github.io/consulta-qb/schemas/0.0.0/expression.schema.json#/$defs/ref_expression"
-                  }
-                ]
-              }
-            },
-            "additionalProperties": false,
-            "required": ["mode", "table", "on"]
-          }
-        },
-
-        "where": {
-          "anyOf": [
-            {
-              "$ref": "https://guesant.github.io/consulta-qb/schemas/0.0.0/expression.schema.json#/$defs/ref_expression"
-            }
-          ]
-        }
-      },
-
-      "additionalProperties": false,
-
-      "required": ["columns", "from"]
-    },
-
-    "ref_select": {
-      "type": "object",
-
-      "properties": {
-        "select": {
-          "$ref": "#/$defs/select"
+          "required": ["from", "columns"]
         }
       },
 
@@ -132,16 +98,57 @@
       "required": ["select"]
     },
 
-    "query": {
-      "anyOf": [
+    "select_column_target": {
+      "oneOf": [
         {
-          "$ref": "#/$defs/ref_select"
+          "$ref": "https://guesant.github.io/consulta-qb/schemas/0.0.0/expression.schema.json#/$defs/column"
+        },
+        {
+          "$ref": "https://guesant.github.io/consulta-qb/schemas/0.0.0/expression.schema.json#/$defs/symbol"
         }
       ]
     },
 
-    "ref_query": {
-      "$ref": "#/$defs/query"
+    "select_column_simple": {
+      "$ref": "#/$defs/select_column_target"
+    },
+
+    "select_column_verbose": {
+      "type": "object",
+
+      "properties": {
+        "value": {
+          "$ref": "#/$defs/select_column_target"
+        },
+
+        "as": {
+          "type": "string"
+        }
+      },
+
+      "additionalProperties": false,
+
+      "required": ["value"]
+    },
+
+    "select_column": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/select_column_simple"
+        },
+
+        {
+          "$ref": "#/$defs/select_column_verbose"
+        }
+      ]
+    },
+
+    "query": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/select"
+        }
+      ]
     }
   }
 }

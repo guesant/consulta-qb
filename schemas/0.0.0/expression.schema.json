@@ -7,673 +7,392 @@
     "cmp_between": {
       "type": "object",
 
-      "description": "Between",
-
       "properties": {
-        "type": {
-          "type": "string",
-          "enum": ["cmp_between"],
-          "default": "cmp_between"
-        },
-
-        "value": {
-          "$ref": "#/$defs/ref_expression"
-        },
-
-        "start": {
-          "$ref": "#/$defs/ref_expression"
-        },
-
-        "end": {
-          "$ref": "#/$defs/ref_expression"
-        }
-      },
-
-
-      "required": ["value", "start", "end"]
-    },
-
-    "ref_cmp_between": {
-      "oneOf": [
-        {
+        "BETWEEN": {
           "type": "object",
 
+          "description": "Between",
+
           "properties": {
-            "ref": {
-              "type": "string",
-              "enum": ["cmp_between"],
-              "default": "cmp_between"
+            "value": {
+              "$ref": "#/$defs/expression"
             },
-            "BETWEEN": {
-              "$ref": "#/$defs/cmp_between"
+
+            "start": {
+              "$ref": "#/$defs/expression"
+            },
+
+            "end": {
+              "$ref": "#/$defs/expression"
             }
           },
 
+          "additionalProperties": false,
 
-          "required": ["BETWEEN"]
+          "required": ["value", "start", "end"]
         }
-      ]
+      },
+
+      "additionalProperties": false,
+
+      "required": ["BETWEEN"]
     },
 
     "cmp_eq": {
-      "type": "array",
+      "type": "object",
 
-      "description": "Equal",
+      "properties": {
+        "==": {
+          "type": "array",
 
-      "items": {
-        "$ref": "#/$defs/ref_expression"
-      },
+          "description": "Equal",
 
-      "minItems": 2,
-      "maxItems": 2
-    },
-
-    "ref_cmp_eq": {
-      "oneOf": [
-        {
-          "type": "object",
-
-          "properties": {
-            "ref": {
-              "type": "string",
-              "enum": ["cmp_eq"],
-              "default": "cmp_eq"
-            },
-            "==": {
-              "$ref": "#/$defs/cmp_eq"
-            }
+          "items": {
+            "$ref": "#/$defs/expression"
           },
 
-
-          "required": ["=="]
+          "minItems": 2,
+          "maxItems": 2
         }
-      ]
+      },
+
+      "additionalProperties": false,
+
+      "required": ["=="]
     },
 
     "cmp_gt": {
-      "type": "array",
-      "description": "Greater than",
+      "type": "object",
 
-      "items": {
-        "$ref": "#/$defs/ref_expression"
-      },
+      "properties": {
+        ">": {
+          "type": "array",
+          "description": "Greater than",
 
-      "minItems": 2,
-      "maxItems": 2
-    },
-
-    "ref_cmp_gt": {
-      "oneOf": [
-        {
-          "type": "object",
-
-          "properties": {
-            "ref": {
-              "type": "string",
-              "enum": ["cmp_gt"],
-              "default": "cmp_gt"
-            },
-            ">": {
-              "$ref": "#/$defs/cmp_gt"
-            }
+          "items": {
+            "$ref": "#/$defs/expression"
           },
 
-
-          "required": [">"]
+          "minItems": 2,
+          "maxItems": 2
         }
-      ]
+      },
+
+      "additionalProperties": false,
+
+      "required": [">"]
     },
 
     "cmp_gte": {
-      "type": "array",
-      "description": "Greater than or equal",
+      "type": "object",
 
-      "items": {
-        "$ref": "#/$defs/ref_expression"
-      },
+      "properties": {
+        ">=": {
+          "type": "array",
+          "description": "Greater than or equal",
 
-      "minItems": 2,
-      "maxItems": 2
-    },
-
-    "ref_cmp_gte": {
-      "oneOf": [
-        {
-          "type": "object",
-
-          "properties": {
-            "ref": {
-              "type": "string",
-              "enum": ["cmp_gte"],
-              "default": "cmp_gte"
-            },
-            ">=": {
-              "$ref": "#/$defs/cmp_gte"
-            }
+          "items": {
+            "$ref": "#/$defs/expression"
           },
 
-
-          "required": [">="]
+          "minItems": 2,
+          "maxItems": 2
         }
-      ]
+      },
+
+      "additionalProperties": false,
+
+      "required": [">="]
     },
 
     "cmp_in": {
       "type": "object",
 
-      "description": "In",
-
       "properties": {
-        "type": {
-          "type": "string",
-          "enum": ["cmp_in"],
-          "default": "cmp_in"
-        },
-
-        "value": {
-          "$ref": "#/$defs/ref_expression"
-        },
-
-        "items": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/ref_expression"
-          }
-        }
-      },
-
-      "additionalProperties": false
-    },
-
-    "ref_cmp_in": {
-      "oneOf": [
-        {
+        "IN": {
           "type": "object",
 
+          "description": "In",
+
           "properties": {
-            "ref": {
-              "type": "string",
-              "enum": ["cmp_in"],
-              "default": "cmp_in"
+            "value": {
+              "$ref": "#/$defs/expression"
             },
 
-            "IN": {
-              "$ref": "#/$defs/cmp_in"
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/expression"
+              }
             }
           },
 
+          "additionalProperties": false,
 
-          "required": ["IN"]
+          "required": ["value", "items"]
         }
-      ]
+      },
+
+      "additionalProperties": false,
+
+      "required": ["IN"]
     },
 
     "cmp_is_not_null": {
-      "description": "Is not null",
+      "type": "object",
 
-      "$ref": "#/$defs/ref_expression"
-    },
+      "properties": {
+        "IS NOT NULL": {
+          "description": "Is not null",
 
-    "ref_cmp_is_not_null": {
-      "oneOf": [
-        {
-          "type": "object",
-
-          "properties": {
-            "ref": {
-              "type": "string",
-              "enum": ["cmp_is_not_null"],
-              "default": "cmp_is_not_null"
-            },
-
-            "IS NOT NULL": {
-              "$ref": "#/$defs/cmp_is_not_null"
-            }
-          },
-
-
-          "required": ["IS NOT NULL"]
+          "$ref": "#/$defs/expression"
         }
-      ]
+      },
+
+      "additionalProperties": false,
+
+      "required": ["IS NOT NULL"]
     },
 
     "cmp_is_null": {
-      "description": "Is null",
-      "$ref": "#/$defs/ref_expression"
-    },
+      "type": "object",
 
-    "ref_cmp_is_null": {
-      "oneOf": [
-        {
-          "type": "object",
-
-          "properties": {
-            "ref": {
-              "type": "string",
-              "enum": ["cmp_is_null"],
-              "default": "cmp_is_null"
-            },
-            "IS NULL": {
-              "$ref": "#/$defs/cmp_is_null"
-            }
-          },
-
-
-          "required": ["IS NULL"]
+      "properties": {
+        "IS NULL": {
+          "description": "Is null",
+          "$ref": "#/$defs/expression"
         }
-      ]
-    },
-
-    "cmp_lt": {
-      "type": "array",
-
-      "description": "Less than",
-
-      "items": {
-        "$ref": "#/$defs/ref_expression"
       },
 
-      "minItems": 2,
-      "maxItems": 2
-    },
+      "additionalProperties": false,
 
-    "ref_cmp_lt": {
-      "oneOf": [
-        {
-          "type": "object",
-
-          "properties": {
-            "ref": {
-              "type": "string",
-              "enum": ["cmp_lt"],
-              "default": "cmp_lt"
-            },
-            "<": {
-              "$ref": "#/$defs/cmp_lt"
-            }
-          },
-
-
-          "required": ["<"]
-        }
-      ]
-    },
-
-    "cmp_lte": {
-      "type": "array",
-      "description": "Less than or equal",
-
-      "items": {
-        "$ref": "#/$defs/ref_expression"
-      },
-
-      "minItems": 2,
-      "maxItems": 2
-    },
-
-    "ref_cmp_lte": {
-      "oneOf": [
-        {
-          "type": "object",
-
-          "properties": {
-            "ref": {
-              "type": "string",
-              "enum": ["cmp_lte"],
-              "default": "cmp_lte"
-            },
-            "<=": {
-              "$ref": "#/$defs/cmp_lte"
-            }
-          },
-
-
-          "required": ["<="]
-        }
-      ]
+      "required": ["IS NULL"]
     },
 
     "cmp_like": {
       "type": "object",
 
-      "description": "Like",
-
       "properties": {
-        "type": {
-          "type": "string",
-          "enum": ["cmp_like"],
-          "default": "cmp_like"
-        },
+        "LIKE": {
+          "type": "object",
 
-        "value": {
-          "$ref": "#/$defs/ref_expression"
-        },
+          "description": "Like",
 
-        "pattern": {
-          "$ref": "#/$defs/ref_literal"
+          "properties": {
+            "value": {
+              "$ref": "#/$defs/expression"
+            },
+
+            "pattern": {
+              "$ref": "#/$defs/literal"
+            }
+          },
+
+          "additionalProperties": false,
+
+          "required": ["value", "pattern"]
         }
       },
 
-      "additionalProperties": false
+      "additionalProperties": false,
+
+      "required": ["LIKE"]
     },
 
-    "ref_cmp_like": {
-      "oneOf": [
-        {
-          "type": "object",
-
-          "properties": {
-            "ref": {
-              "type": "string",
-              "enum": ["cmp_like"],
-              "default": "cmp_like"
-            },
-            "LIKE": {
-              "$ref": "#/$defs/cmp_like"
-            }
-          },
-
-
-          "required": ["LIKE"]
-        }
-      ]
-    },
-
-    "cmp_neq": {
-      "type": "array",
-
-      "description": "Not equal",
-
-      "items": {
-        "$ref": "#/$defs/ref_expression"
-      },
-
-      "minItems": 2,
-      "maxItems": 2
-    },
-
-    "ref_cmp_neq": {
-      "oneOf": [
-        {
-          "type": "object",
-
-          "properties": {
-            "ref": {
-              "type": "string",
-              "enum": ["cmp_neq"],
-              "default": "cmp_neq"
-            },
-            "!=": {
-              "$ref": "#/$defs/cmp_neq"
-            }
-          },
-
-
-          "required": ["!="]
-        },
-
-        {
-          "type": "object",
-
-          "properties": {
-            "ref": {
-              "type": "string",
-              "enum": ["cmp_neq"],
-              "default": "cmp_neq"
-            },
-            "<>": {
-              "$ref": "#/$defs/cmp_neq"
-            }
-          },
-
-
-          "required": ["<>"]
-        }
-      ]
-    },
-
-    "literal": {
-      "description": "Literal value",
-
-      "oneOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "number"
-        },
-        {
-          "type": "boolean"
-        },
-        {
-          "type": "null"
-        }
-      ]
-    },
-
-    "ref_literal": {
+    "cmp_lt": {
       "type": "object",
 
       "properties": {
-        "ref": {
-          "type": "string",
-          "enum": ["literal"],
-          "default": "literal"
-        },
+        "<": {
+          "type": "array",
 
-        "literal": {
-          "$ref": "#/$defs/literal"
+          "description": "Less than",
+
+          "items": {
+            "$ref": "#/$defs/expression"
+          },
+
+          "minItems": 2,
+          "maxItems": 2
         }
       },
 
+      "additionalProperties": false,
+
+      "required": ["<"]
+    },
+
+    "cmp_lte": {
+      "type": "object",
+
+      "properties": {
+        "<=": {
+          "type": "array",
+          "description": "Less than or equal",
+
+          "items": {
+            "$ref": "#/$defs/expression"
+          },
+
+          "minItems": 2,
+          "maxItems": 2
+        }
+      },
+
+      "additionalProperties": false,
+
+      "required": ["<="]
+    },
+
+    "cmp_neq": {
+      "type": "object",
+
+      "properties": {
+        "!=": {
+          "type": "array",
+
+          "description": "Not equal",
+
+          "items": {
+            "$ref": "#/$defs/expression"
+          },
+
+          "minItems": 2,
+          "maxItems": 2
+        }
+      },
+
+      "additionalProperties": false,
+
+      "required": ["!="]
+    },
+
+    "literal": {
+      "type": "object",
+
+      "properties": {
+        "literal": {
+          "description": "Literal value",
+
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+
+      "additionalProperties": false,
 
       "required": ["literal"]
     },
 
     "op_and": {
-      "type": "array",
+      "type": "object",
 
-      "description": "Binary AND",
+      "properties": {
+        "AND": {
+          "type": "array",
 
-      "items": {
-        "$ref": "#/$defs/ref_expression"
+          "description": "Binary AND",
+
+          "items": {
+            "$ref": "#/$defs/expression"
+          },
+
+          "minItems": 2,
+          "maxItems": 2
+        }
       },
 
-      "minItems": 2
-    },
+      "additionalProperties": false,
 
-    "ref_op_and": {
-      "oneOf": [
-        {
-          "type": "object",
-
-          "properties": {
-            "ref": {
-              "type": "string",
-              "enum": ["op_and"],
-              "default": "op_and"
-            },
-            "AND": {
-              "$ref": "#/$defs/op_and"
-            }
-          },
-
-
-          "required": ["AND"]
-        },
-        {
-          "type": "object",
-
-          "properties": {
-            "ref": {
-              "type": "string",
-              "enum": ["op_and"],
-              "default": "op_and"
-            },
-            "&&": {
-              "$ref": "#/$defs/op_and"
-            }
-          },
-
-
-          "required": ["&&"]
-        }
-      ]
+      "required": ["AND"]
     },
 
     "op_not": {
-      "description": "Binary NOT",
-      "$ref": "#/$defs/ref_expression"
-    },
+      "type": "object",
 
-    "ref_op_not": {
-      "oneOf": [
-        {
-          "type": "object",
-
-          "properties": {
-            "ref": {
-              "type": "string",
-              "enum": ["op_not"],
-              "default": "op_not"
-            },
-            "NOT": {
-              "$ref": "#/$defs/op_not"
-            }
-          },
-
-
-          "required": ["NOT"]
-        },
-        {
-          "type": "object",
-
-          "properties": {
-            "ref": {
-              "type": "string",
-              "enum": ["op_not"],
-              "default": "op_not"
-            },
-            "!": {
-              "$ref": "#/$defs/op_not"
-            }
-          },
-
-
-          "required": ["!"]
+      "properties": {
+        "NOT": {
+          "description": "Binary NOT",
+          "$ref": "#/$defs/expression"
         }
-      ]
+      },
+
+      "additionalProperties": false,
+
+      "required": ["NOT"]
     },
 
     "op_or": {
-      "type": "array",
+      "type": "object",
 
-      "description": "Binary OR",
+      "properties": {
+        "OR": {
+          "type": "array",
 
-      "items": {
-        "$ref": "#/$defs/ref_expression"
+          "description": "Binary OR",
+
+          "items": {
+            "$ref": "#/$defs/expression"
+          },
+
+          "minItems": 2,
+          "maxItems": 2
+        }
       },
 
-      "minItems": 2
-    },
+      "additionalProperties": false,
 
-    "ref_op_or": {
-      "oneOf": [
-        {
-          "type": "object",
-
-          "properties": {
-            "ref": {
-              "type": "string",
-              "enum": ["op_or"],
-              "default": "op_or"
-            },
-            "OR": {
-              "$ref": "#/$defs/op_or"
-            }
-          },
-
-
-          "required": ["OR"]
-        },
-        {
-          "type": "object",
-
-          "properties": {
-            "ref": {
-              "type": "string",
-              "enum": ["op_or"],
-              "default": "op_or"
-            },
-            "||": {
-              "$ref": "#/$defs/op_or"
-            }
-          },
-
-
-          "required": ["||"]
-        }
-      ]
+      "required": ["OR"]
     },
 
     "param": {
       "type": "object",
 
-      "description": "Parameter",
-
       "properties": {
-        "type": {
-          "type": "string",
-          "enum": ["param"],
-          "default": "param"
-        },
-        "name": {
-          "type": "string"
-        }
-      },
-
-
-      "required": ["name"]
-    },
-
-    "ref_param": {
-      "type": "object",
-
-      "properties": {
-        "ref": {
-          "type": "string",
-          "enum": ["param"],
-          "default": "param"
-        },
         "param": {
-          "$ref": "#/$defs/param"
+          "type": "object",
+
+          "description": "Parameter",
+
+          "properties": {
+            "name": {
+              "type": "string"
+            }
+          },
+
+          "required": ["name"]
         }
       },
 
+      "additionalProperties": false,
 
       "required": ["param"]
     },
 
     "symbol": {
-      "type": "string",
-      "description": "Symbol",
-      "enum": ["*"]
-    },
-
-    "ref_symbol": {
       "type": "object",
 
       "properties": {
-        "ref": {
-          "type": "string",
-          "enum": ["symbol"],
-          "default": "symbol"
-        },
         "symbol": {
-          "$ref": "#/$defs/symbol"
+          "type": "string",
+          "description": "Symbol",
+          "enum": ["*"]
         }
       },
 
+      "additionalProperties": false,
 
       "required": ["symbol"]
     },
@@ -683,63 +402,46 @@
 
       "oneOf": [
         {
-          "$ref": "#/$defs/ref_select_column"
+          "$ref": "#/$defs/column"
         },
         {
-          "$ref": "#/$defs/ref_symbol"
+          "$ref": "#/$defs/symbol"
         },
         {
-          "$ref": "#/$defs/ref_literal"
+          "$ref": "#/$defs/literal"
         },
         {
-          "$ref": "#/$defs/ref_param"
+          "$ref": "#/$defs/param"
         }
       ]
     },
 
-    "ref_value": {
-      "$ref": "#/$defs/value"
-    },
-
-    "select_column": {
-      "type": "object",
-
-      "description": "Value of a select column.",
-
-      "properties": {
-        "type": {
-          "type": "string",
-          "enum": ["select_column"],
-          "default": "select_column"
-        },
-        "table": {
-          "$ref": "https://guesant.github.io/consulta-qb/schemas/0.0.0/constraints.schema.json#/$defs/table_name"
-        },
-        "name": {
-          "$ref": "https://guesant.github.io/consulta-qb/schemas/0.0.0/constraints.schema.json#/$defs/column_name"
-        }
-      },
-
-      "required": ["name"]
-    },
-
-    "ref_select_column": {
+    "column": {
       "type": "object",
 
       "properties": {
-        "ref": {
-          "type": "string",
-          "enum": ["select_column"],
-          "default": "select_column"
-        },
+        "column": {
+          "type": "object",
 
-        "select_column": {
-          "$ref": "#/$defs/select_column"
+          "description": "Value of a select column.",
+
+          "properties": {
+            "table": {
+              "$ref": "https://guesant.github.io/consulta-qb/schemas/0.0.0/constraints.schema.json#/$defs/table_name"
+            },
+
+            "name": {
+              "$ref": "https://guesant.github.io/consulta-qb/schemas/0.0.0/constraints.schema.json#/$defs/column_name"
+            }
+          },
+
+          "required": ["name"]
         }
       },
 
+      "additionalProperties": false,
 
-      "required": ["select_column"]
+      "required": ["column"]
     },
 
     "expression": {
@@ -747,55 +449,51 @@
 
       "oneOf": [
         {
-          "$ref": "#/$defs/ref_op_and"
+          "$ref": "#/$defs/op_and"
         },
         {
-          "$ref": "#/$defs/ref_op_or"
+          "$ref": "#/$defs/op_or"
         },
         {
-          "$ref": "#/$defs/ref_op_not"
+          "$ref": "#/$defs/op_not"
         },
         {
-          "$ref": "#/$defs/ref_cmp_eq"
+          "$ref": "#/$defs/cmp_eq"
         },
         {
-          "$ref": "#/$defs/ref_cmp_neq"
+          "$ref": "#/$defs/cmp_neq"
         },
         {
-          "$ref": "#/$defs/ref_cmp_lt"
+          "$ref": "#/$defs/cmp_lt"
         },
         {
-          "$ref": "#/$defs/ref_cmp_lte"
+          "$ref": "#/$defs/cmp_lte"
         },
         {
-          "$ref": "#/$defs/ref_cmp_gt"
+          "$ref": "#/$defs/cmp_gt"
         },
         {
-          "$ref": "#/$defs/ref_cmp_gte"
+          "$ref": "#/$defs/cmp_gte"
         },
         {
-          "$ref": "#/$defs/ref_cmp_between"
+          "$ref": "#/$defs/cmp_between"
         },
         {
-          "$ref": "#/$defs/ref_cmp_like"
+          "$ref": "#/$defs/cmp_like"
         },
         {
-          "$ref": "#/$defs/ref_cmp_in"
+          "$ref": "#/$defs/cmp_in"
         },
         {
-          "$ref": "#/$defs/ref_cmp_is_null"
+          "$ref": "#/$defs/cmp_is_null"
         },
         {
-          "$ref": "#/$defs/ref_cmp_is_not_null"
+          "$ref": "#/$defs/cmp_is_not_null"
         },
         {
-          "$ref": "#/$defs/ref_value"
+          "$ref": "#/$defs/value"
         }
       ]
-    },
-
-    "ref_expression": {
-      "$ref": "#/$defs/expression"
     }
   }
 }
