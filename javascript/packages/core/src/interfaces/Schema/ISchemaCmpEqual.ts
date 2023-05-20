@@ -1,5 +1,5 @@
 import { ISchemaExpression } from "./ISchemaExpression";
 
-export type ISchemaExpressionCmpEqual = {
+export type ISchemaCmpEqual = {
   "==": [ISchemaExpression, ISchemaExpression];
 };

@@ -2,13 +2,13 @@ import {
   AST_TOKEN_CMP_IN,
   IAstCmpIn,
   IAstExpression,
-  ISchemaExpressionCmpIn,
+  ISchemaCmpIn,
 } from "../../../interfaces";
 import { generateAst } from "../generateAst";
 import { IAstGeneratorNodeHandler } from "../interfaces/IAstGeneratorNodeHandler";
 
 export const AstGeneratorCmpInHandler: IAstGeneratorNodeHandler<
-  ISchemaExpressionCmpIn,
+  ISchemaCmpIn,
   IAstCmpIn
 > = {
   path: "#/$defs/cmp_in",

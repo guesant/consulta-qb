@@ -2,13 +2,13 @@ import {
   AST_TOKEN_CMP_LTE,
   IAstCmpLte,
   IAstExpression,
-  ISchemaExpressionCmpLessThanOrEqual,
+  ISchemaCmpLessThanOrEqual,
 } from "../../../interfaces";
 import { generateAst } from "../generateAst";
 import { IAstGeneratorNodeHandler } from "../interfaces/IAstGeneratorNodeHandler";
 
 export const AstGeneratorCmpLteHandler: IAstGeneratorNodeHandler<
-  ISchemaExpressionCmpLessThanOrEqual,
+  ISchemaCmpLessThanOrEqual,
   IAstCmpLte
 > = {
   path: "#/$defs/cmp_lte",

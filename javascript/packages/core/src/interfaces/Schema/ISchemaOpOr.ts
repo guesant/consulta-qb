@@ -1,5 +1,5 @@
 import { ISchemaExpression } from "./ISchemaExpression";
 
-export type ISchemaExpressionOpOr = {
+export type ISchemaOpOr = {
   OR: [ISchemaExpression, ISchemaExpression];
 };

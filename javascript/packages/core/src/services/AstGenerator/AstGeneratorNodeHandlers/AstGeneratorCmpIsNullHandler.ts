@@ -2,13 +2,13 @@ import {
   AST_TOKEN_CMP_IS_NULL,
   IAstCmpIsNull,
   IAstExpression,
-  ISchemaExpressionCmpIsNull,
+  ISchemaCmpIsNull,
 } from "../../../interfaces";
 import { generateAst } from "../generateAst";
 import { IAstGeneratorNodeHandler } from "../interfaces/IAstGeneratorNodeHandler";
 
 export const AstGeneratorCmpIsNullHandler: IAstGeneratorNodeHandler<
-  ISchemaExpressionCmpIsNull,
+  ISchemaCmpIsNull,
   IAstCmpIsNull
 > = {
   path: "#/$defs/cmp_is_null",

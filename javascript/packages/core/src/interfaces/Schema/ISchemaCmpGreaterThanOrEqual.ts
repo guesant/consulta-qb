@@ -1,5 +1,5 @@
 import { ISchemaExpression } from "./ISchemaExpression";
 
-export type ISchemaExpressionCmpGreaterThanOrEqual = {
+export type ISchemaCmpGreaterThanOrEqual = {
   ">=": [ISchemaExpression, ISchemaExpression];
 };

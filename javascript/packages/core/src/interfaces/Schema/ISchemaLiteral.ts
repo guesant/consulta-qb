@@ -1,3 +1,3 @@
-export type ISchemaExpressionLiteral = {
+export type ISchemaLiteral = {
   literal: string | number | boolean | null;
 };

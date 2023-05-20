@@ -1,6 +1,6 @@
 import { ISchemaExpression } from "./ISchemaExpression";
 
-export type ISchemaExpressionCmpBetween = {
+export type ISchemaCmpBetween = {
   BETWEEN: {
     value: ISchemaExpression;
     start: ISchemaExpression;

@@ -1,12 +1,12 @@
 import {
   AST_TOKEN_OP_PARAM,
   IAstParam,
-  ISchemaExpressionParam,
+  ISchemaParam,
 } from "../../../interfaces";
 import { IAstGeneratorNodeHandler } from "../interfaces/IAstGeneratorNodeHandler";
 
 export const AstGeneratorParamHandler: IAstGeneratorNodeHandler<
-  ISchemaExpressionParam,
+  ISchemaParam,
   IAstParam
 > = {
   path: "#/$defs/param",

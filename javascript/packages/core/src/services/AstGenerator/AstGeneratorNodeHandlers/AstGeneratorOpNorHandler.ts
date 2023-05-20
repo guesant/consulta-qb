@@ -1,14 +1,14 @@
 import {
   AST_TOKEN_OP_NOT,
   IAstExpression,
-  ISchemaExpressionOpNot,
+  ISchemaOpNot,
 } from "../../../interfaces";
 import { IAstOpNot } from "../../../interfaces/Ast/IAstOpNot";
 import { generateAst } from "../generateAst";
 import { IAstGeneratorNodeHandler } from "../interfaces/IAstGeneratorNodeHandler";
 
 export const AstGeneratorOpNotHandler: IAstGeneratorNodeHandler<
-  ISchemaExpressionOpNot,
+  ISchemaOpNot,
   IAstOpNot
 > = {
   path: "#/$defs/op_not",

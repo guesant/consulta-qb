@@ -2,13 +2,13 @@ import {
   AST_TOKEN_CMP_BETWEEN,
   IAstCmpBetween,
   IAstExpression,
-  ISchemaExpressionCmpBetween,
+  ISchemaCmpBetween,
 } from "../../../interfaces";
 import { generateAst } from "../generateAst";
 import { IAstGeneratorNodeHandler } from "../interfaces/IAstGeneratorNodeHandler";
 
 export const AstGeneratorCmpBetweenHandler: IAstGeneratorNodeHandler<
-  ISchemaExpressionCmpBetween,
+  ISchemaCmpBetween,
   IAstCmpBetween
 > = {
   path: "#/$defs/cmp_between",

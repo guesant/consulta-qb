@@ -2,13 +2,13 @@ import {
   AST_TOKEN_CMP_LIKE,
   IAstCmpLike,
   IAstExpression,
-  ISchemaExpressionCmpLike,
+  ISchemaCmpLike,
 } from "../../../interfaces";
 import { generateAst } from "../generateAst";
 import { IAstGeneratorNodeHandler } from "../interfaces/IAstGeneratorNodeHandler";
 
 export const AstGeneratorCmpLikeHandler: IAstGeneratorNodeHandler<
-  ISchemaExpressionCmpLike,
+  ISchemaCmpLike,
   IAstCmpLike
 > = {
   path: "#/$defs/cmp_like",

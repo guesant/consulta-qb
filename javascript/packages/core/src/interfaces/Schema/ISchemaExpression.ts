@@ -1,41 +1,41 @@
-import { ISchemaExpressionValue } from "./ISchemaExpressionValue";
-import { ISchemaExpressionOpAnd } from "./ISchemaExpressionOpAnd";
-import { ISchemaExpressionOpOr } from "./ISchemaExpressionOpOr";
-import { ISchemaExpressionOpNot } from "./ISchemaExpressionOpNot";
-import { ISchemaExpressionCmpEqual } from "./ISchemaExpressionCmpEqual";
-import { ISchemaExpressionCmpNotEqual } from "./ISchemaExpressionCmpNotEqual";
-import { ISchemaExpressionCmpLessThan } from "./ISchemaExpressionCmpLessThan";
-import { ISchemaExpressionCmpLessThanOrEqual } from "./ISchemaExpressionCmpLessThanOrEqual";
-import { ISchemaExpressionCmpGreaterThan } from "./ISchemaExpressionCmpGreaterThan";
-import { ISchemaExpressionCmpGreaterThanOrEqual } from "./ISchemaExpressionCmpGreaterThanOrEqual";
-import { ISchemaExpressionCmpBetween } from "./ISchemaExpressionCmpBetween";
-import { ISchemaExpressionCmpLike } from "./ISchemaExpressionCmpLike";
-import { ISchemaExpressionCmpIn } from "./ISchemaExpressionCmpIn";
-import { ISchemaExpressionCmpIsNull } from "./ISchemaExpressionCmpIsNull";
-import { ISchemaExpressionCmpIsNotNull } from "./ISchemaExpressionCmpIsNotNull";
-import { ISchemaExpressionColumn } from "./ISchemaExpressionColumn";
-import { ISchemaExpressionLiteral } from "./ISchemaExpressionLiteral";
-import { ISchemaExpressionParam } from "./ISchemaExpressionParam";
-import { ISchemaExpressionSymbol } from "./ISchemaExpressionSymbol";
+import { ISchemaValue } from "./ISchemaValue";
+import { ISchemaOpAnd } from "./ISchemaOpAnd";
+import { ISchemaOpOr } from "./ISchemaOpOr";
+import { ISchemaOpNot } from "./ISchemaOpNot";
+import { ISchemaCmpEqual } from "./ISchemaCmpEqual";
+import { ISchemaCmpNotEqual } from "./ISchemaCmpNotEqual";
+import { ISchemaCmpLessThan } from "./ISchemaCmpLessThan";
+import { ISchemaCmpLessThanOrEqual } from "./ISchemaCmpLessThanOrEqual";
+import { ISchemaCmpGreaterThan } from "./ISchemaCmpGreaterThan";
+import { ISchemaCmpGreaterThanOrEqual } from "./ISchemaCmpGreaterThanOrEqual";
+import { ISchemaCmpBetween } from "./ISchemaCmpBetween";
+import { ISchemaCmpLike } from "./ISchemaCmpLike";
+import { ISchemaCmpIn } from "./ISchemaCmpIn";
+import { ISchemaCmpIsNull } from "./ISchemaCmpIsNull";
+import { ISchemaCmpIsNotNull } from "./ISchemaCmpIsNotNull";
+import { ISchemaColumn } from "./ISchemaColumn";
+import { ISchemaLiteral } from "./ISchemaLiteral";
+import { ISchemaParam } from "./ISchemaParam";
+import { ISchemaSymbol } from "./ISchemaSymbol";
 
 export type ISchemaExpression =
-  | ISchemaExpressionCmpBetween
-  | ISchemaExpressionCmpEqual
-  | ISchemaExpressionCmpGreaterThan
-  | ISchemaExpressionCmpGreaterThanOrEqual
-  | ISchemaExpressionCmpIn
-  | ISchemaExpressionCmpIsNotNull
-  | ISchemaExpressionCmpIsNull
-  | ISchemaExpressionCmpLessThan
-  | ISchemaExpressionCmpLessThanOrEqual
-  | ISchemaExpressionCmpLike
-  | ISchemaExpressionCmpNotEqual
-  | ISchemaExpressionColumn
-  | ISchemaExpressionLiteral
-  | ISchemaExpressionOpAnd
-  | ISchemaExpressionOpNot
-  | ISchemaExpressionOpOr
-  | ISchemaExpressionParam
-  | ISchemaExpressionSymbol
+  | ISchemaCmpBetween
+  | ISchemaCmpEqual
+  | ISchemaCmpGreaterThan
+  | ISchemaCmpGreaterThanOrEqual
+  | ISchemaCmpIn
+  | ISchemaCmpIsNotNull
+  | ISchemaCmpIsNull
+  | ISchemaCmpLessThan
+  | ISchemaCmpLessThanOrEqual
+  | ISchemaCmpLike
+  | ISchemaCmpNotEqual
+  | ISchemaColumn
+  | ISchemaLiteral
+  | ISchemaOpAnd
+  | ISchemaOpNot
+  | ISchemaOpOr
+  | ISchemaParam
+  | ISchemaSymbol
   //
-  | ISchemaExpressionValue;
+  | ISchemaValue;

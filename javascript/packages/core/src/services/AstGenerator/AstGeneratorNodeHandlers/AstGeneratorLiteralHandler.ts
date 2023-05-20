@@ -1,12 +1,12 @@
 import {
   AST_TOKEN_LITERAL,
   IAstLiteral,
-  ISchemaExpressionLiteral,
+  ISchemaLiteral,
 } from "../../../interfaces";
 import { IAstGeneratorNodeHandler } from "../interfaces/IAstGeneratorNodeHandler";
 
 export const AstGeneratorLiteralHandler: IAstGeneratorNodeHandler<
-  ISchemaExpressionLiteral,
+  ISchemaLiteral,
   IAstLiteral
 > = {
   path: "#/$defs/literal",

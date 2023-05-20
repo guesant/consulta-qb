@@ -1,12 +1,12 @@
 import {
   AST_TOKEN_SYMBOL,
   IAstSymbol,
-  ISchemaExpressionSymbol,
+  ISchemaSymbol,
 } from "../../../interfaces";
 import { IAstGeneratorNodeHandler } from "../interfaces/IAstGeneratorNodeHandler";
 
 export const AstGeneratorSymbolHandler: IAstGeneratorNodeHandler<
-  ISchemaExpressionSymbol,
+  ISchemaSymbol,
   IAstSymbol
 > = {
   path: "#/$defs/symbol",

@@ -1,5 +1,5 @@
 import { ISchemaExpression } from "./ISchemaExpression";
 
-export type ISchemaExpressionOpNot = {
+export type ISchemaOpNot = {
   NOT: ISchemaExpression;
 };

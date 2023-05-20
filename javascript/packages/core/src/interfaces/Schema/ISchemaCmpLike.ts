@@ -1,8 +1,8 @@
 import { ISchemaExpression } from "./ISchemaExpression";
 
-export type ISchemaExpressionCmpIn = {
-  IN: {
+export type ISchemaCmpLike = {
+  LIKE: {
     value: ISchemaExpression;
-    items: ISchemaExpression[];
+    pattern: ISchemaExpression;
   };
 };

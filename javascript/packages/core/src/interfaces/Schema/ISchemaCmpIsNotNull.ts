@@ -1,5 +1,5 @@
 import { ISchemaExpression } from "./ISchemaExpression";
 
-export type ISchemaExpressionCmpIsNotNull = {
+export type ISchemaCmpIsNotNull = {
   "IS NOT NULL": ISchemaExpression;
 };

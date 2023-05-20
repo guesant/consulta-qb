@@ -1,6 +1,4 @@
-import { ISchemaExpressionColumn } from "./ISchemaExpressionColumn";
-import { ISchemaExpressionSymbol } from "./ISchemaExpressionSymbol";
+import { ISchemaColumn } from "./ISchemaColumn";
+import { ISchemaSymbol } from "./ISchemaSymbol";
 
-export type ISchemaQuerySelectColumnTarget =
-  | ISchemaExpressionColumn
-  | ISchemaExpressionSymbol;
+export type ISchemaQuerySelectColumnTarget = ISchemaColumn | ISchemaSymbol;

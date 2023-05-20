@@ -2,13 +2,13 @@ import {
   AST_TOKEN_OP_AND,
   IAstExpression,
   IAstOpAnd,
-  ISchemaExpressionOpAnd,
+  ISchemaOpAnd,
 } from "../../../interfaces";
 import { generateAst } from "../generateAst";
 import { IAstGeneratorNodeHandler } from "../interfaces/IAstGeneratorNodeHandler";
 
 export const AstGeneratorOpAndHandler: IAstGeneratorNodeHandler<
-  ISchemaExpressionOpAnd,
+  ISchemaOpAnd,
   IAstOpAnd
 > = {
   path: "#/$defs/op_and",

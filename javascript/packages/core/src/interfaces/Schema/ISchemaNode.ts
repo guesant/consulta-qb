@@ -1,25 +1,25 @@
 import { ISchemaConstraintColumnName } from "./ISchemaConstraintColumnName";
 import { ISchemaConstraintTableName } from "./ISchemaConstraintTableName";
 import { ISchemaExpression } from "./ISchemaExpression";
-import { ISchemaExpressionCmpBetween } from "./ISchemaExpressionCmpBetween";
-import { ISchemaExpressionCmpEqual } from "./ISchemaExpressionCmpEqual";
-import { ISchemaExpressionCmpGreaterThan } from "./ISchemaExpressionCmpGreaterThan";
-import { ISchemaExpressionCmpGreaterThanOrEqual } from "./ISchemaExpressionCmpGreaterThanOrEqual";
-import { ISchemaExpressionCmpIn } from "./ISchemaExpressionCmpIn";
-import { ISchemaExpressionCmpIsNotNull } from "./ISchemaExpressionCmpIsNotNull";
-import { ISchemaExpressionCmpIsNull } from "./ISchemaExpressionCmpIsNull";
-import { ISchemaExpressionCmpLessThan } from "./ISchemaExpressionCmpLessThan";
-import { ISchemaExpressionCmpLessThanOrEqual } from "./ISchemaExpressionCmpLessThanOrEqual";
-import { ISchemaExpressionCmpLike } from "./ISchemaExpressionCmpLike";
-import { ISchemaExpressionCmpNotEqual } from "./ISchemaExpressionCmpNotEqual";
-import { ISchemaExpressionColumn } from "./ISchemaExpressionColumn";
-import { ISchemaExpressionLiteral } from "./ISchemaExpressionLiteral";
-import { ISchemaExpressionOpAnd } from "./ISchemaExpressionOpAnd";
-import { ISchemaExpressionOpNot } from "./ISchemaExpressionOpNot";
-import { ISchemaExpressionOpOr } from "./ISchemaExpressionOpOr";
-import { ISchemaExpressionParam } from "./ISchemaExpressionParam";
-import { ISchemaExpressionSymbol } from "./ISchemaExpressionSymbol";
-import { ISchemaExpressionValue } from "./ISchemaExpressionValue";
+import { ISchemaCmpBetween } from "./ISchemaCmpBetween";
+import { ISchemaCmpEqual } from "./ISchemaCmpEqual";
+import { ISchemaCmpGreaterThan } from "./ISchemaCmpGreaterThan";
+import { ISchemaCmpGreaterThanOrEqual } from "./ISchemaCmpGreaterThanOrEqual";
+import { ISchemaCmpIn } from "./ISchemaCmpIn";
+import { ISchemaCmpIsNotNull } from "./ISchemaCmpIsNotNull";
+import { ISchemaCmpIsNull } from "./ISchemaCmpIsNull";
+import { ISchemaCmpLessThan } from "./ISchemaCmpLessThan";
+import { ISchemaCmpLessThanOrEqual } from "./ISchemaCmpLessThanOrEqual";
+import { ISchemaCmpLike } from "./ISchemaCmpLike";
+import { ISchemaCmpNotEqual } from "./ISchemaCmpNotEqual";
+import { ISchemaColumn } from "./ISchemaColumn";
+import { ISchemaLiteral } from "./ISchemaLiteral";
+import { ISchemaOpAnd } from "./ISchemaOpAnd";
+import { ISchemaOpNot } from "./ISchemaOpNot";
+import { ISchemaOpOr } from "./ISchemaOpOr";
+import { ISchemaParam } from "./ISchemaParam";
+import { ISchemaSymbol } from "./ISchemaSymbol";
+import { ISchemaValue } from "./ISchemaValue";
 import { ISchemaQuery } from "./ISchemaQuery";
 import { ISchemaQuerySelect } from "./ISchemaQuerySelect";
 import { ISchemaQuerySelectColumn } from "./ISchemaQuerySelectColumn";
@@ -32,25 +32,25 @@ export type ISchemaNode =
   | ISchemaConstraintColumnName
   | ISchemaConstraintTableName
   | ISchemaExpression
-  | ISchemaExpressionCmpBetween
-  | ISchemaExpressionCmpEqual
-  | ISchemaExpressionCmpGreaterThan
-  | ISchemaExpressionCmpGreaterThanOrEqual
-  | ISchemaExpressionCmpIn
-  | ISchemaExpressionCmpIsNotNull
-  | ISchemaExpressionCmpIsNull
-  | ISchemaExpressionCmpLessThan
-  | ISchemaExpressionCmpLessThanOrEqual
-  | ISchemaExpressionCmpLike
-  | ISchemaExpressionCmpNotEqual
-  | ISchemaExpressionColumn
-  | ISchemaExpressionLiteral
-  | ISchemaExpressionOpAnd
-  | ISchemaExpressionOpNot
-  | ISchemaExpressionOpOr
-  | ISchemaExpressionParam
-  | ISchemaExpressionSymbol
-  | ISchemaExpressionValue
+  | ISchemaCmpBetween
+  | ISchemaCmpEqual
+  | ISchemaCmpGreaterThan
+  | ISchemaCmpGreaterThanOrEqual
+  | ISchemaCmpIn
+  | ISchemaCmpIsNotNull
+  | ISchemaCmpIsNull
+  | ISchemaCmpLessThan
+  | ISchemaCmpLessThanOrEqual
+  | ISchemaCmpLike
+  | ISchemaCmpNotEqual
+  | ISchemaColumn
+  | ISchemaLiteral
+  | ISchemaOpAnd
+  | ISchemaOpNot
+  | ISchemaOpOr
+  | ISchemaParam
+  | ISchemaSymbol
+  | ISchemaValue
   | ISchemaQuery
   | ISchemaQuerySelect
   | ISchemaQuerySelectColumn

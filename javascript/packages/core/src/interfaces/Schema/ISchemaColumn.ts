@@ -1,7 +1,7 @@
 import { ISchemaConstraintTableName } from "./ISchemaConstraintTableName";
 import { ISchemaConstraintColumnName } from "./ISchemaConstraintColumnName";
 
-export type ISchemaExpressionColumn = {
+export type ISchemaColumn = {
   column: {
     table?: ISchemaConstraintTableName;
     name: ISchemaConstraintColumnName;

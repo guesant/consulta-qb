@@ -1,5 +1,5 @@
 import { ISchemaExpression } from "./ISchemaExpression";
 
-export type ISchemaExpressionCmpNotEqual = {
+export type ISchemaCmpNotEqual = {
   "!=": [ISchemaExpression, ISchemaExpression];
 };

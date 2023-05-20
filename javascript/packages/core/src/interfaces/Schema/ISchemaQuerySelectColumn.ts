@@ -1,6 +1,6 @@
-import { ISchemaExpressionValue } from "./ISchemaExpressionValue";
+import { ISchemaValue } from "./ISchemaValue";
 import { ISchemaQuerySelectColumnVerbose } from "./ISchemaQuerySelectColumnVerbose";
 
 export type ISchemaQuerySelectColumn =
-  | ISchemaExpressionValue
+  | ISchemaValue
   | ISchemaQuerySelectColumnVerbose;

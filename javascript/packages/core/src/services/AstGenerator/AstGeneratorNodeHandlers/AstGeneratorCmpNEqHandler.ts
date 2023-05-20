@@ -2,13 +2,13 @@ import {
   AST_TOKEN_CMP_NEQ,
   IAstCmpNEq,
   IAstExpression,
-  ISchemaExpressionCmpNotEqual,
+  ISchemaCmpNotEqual,
 } from "../../../interfaces";
 import { generateAst } from "../generateAst";
 import { IAstGeneratorNodeHandler } from "../interfaces/IAstGeneratorNodeHandler";
 
 export const AstGeneratorCmpNEqHandler: IAstGeneratorNodeHandler<
-  ISchemaExpressionCmpNotEqual,
+  ISchemaCmpNotEqual,
   IAstCmpNEq
 > = {
   path: "#/$defs/cmp_neq",
