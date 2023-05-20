@@ -50,7 +50,7 @@ const detectNodeStructuresSlim = (node: any) =>
   );
 
 describe("detectNodeStructures()", () => {
-  it("should detect node structures", () => {
+  it("should detect valid node structures", () => {
     const columnPostVisibility: ISchemaColumn = {
       column: {
         table: "post",

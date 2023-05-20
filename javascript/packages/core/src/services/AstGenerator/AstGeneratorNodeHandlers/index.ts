@@ -12,7 +12,7 @@ export * from "./AstGeneratorCmpNEqHandler";
 export * from "./AstGeneratorColumnHandler";
 export * from "./AstGeneratorLiteralHandler";
 export * from "./AstGeneratorOpAndHandler";
-export * from "./AstGeneratorOpNorHandler";
+export * from "./AstGeneratorOpNotHandler";
 export * from "./AstGeneratorOpOrHandler";
 export * from "./AstGeneratorParamHandler";
 export * from "./AstGeneratorQuerySelectColumnVerboseHandler";

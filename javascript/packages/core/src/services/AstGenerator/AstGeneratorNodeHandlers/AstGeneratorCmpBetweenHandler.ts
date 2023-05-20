@@ -18,7 +18,6 @@ export const AstGeneratorCmpBetweenHandler: IAstGeneratorNodeHandler<
 
     const astExpression: IAstCmpBetween = {
       type: AST_TOKEN_CMP_BETWEEN,
-
       value: generateAst(data.BETWEEN.value) as IAstExpression,
       start: generateAst(data.BETWEEN.start) as IAstExpression,
       end: generateAst(data.BETWEEN.end) as IAstExpression,

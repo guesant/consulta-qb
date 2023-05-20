@@ -20,7 +20,6 @@ export const generateAst = <Ast = IAstNode, Schema = ISchemaNode>(
 
     if (handlerStructure !== null) {
       const astNode = handler.handle(handlerStructure);
-
       return astNode as Ast;
     }
   }
