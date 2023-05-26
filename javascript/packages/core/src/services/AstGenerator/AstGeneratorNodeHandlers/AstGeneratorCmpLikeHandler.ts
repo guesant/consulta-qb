@@ -21,7 +21,6 @@ export const AstGeneratorCmpLikeHandler: IAstGeneratorNodeHandler<
 
     const astExpression: IAstCmpLike = {
       type: AST_TOKEN_CMP_LIKE,
-
       value,
       pattern,
     };

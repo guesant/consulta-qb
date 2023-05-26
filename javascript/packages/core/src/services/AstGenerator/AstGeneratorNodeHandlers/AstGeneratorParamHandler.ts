@@ -16,7 +16,6 @@ export const AstGeneratorParamHandler: IAstGeneratorNodeHandler<
 
     const astExpression: IAstParam = {
       type: AST_TOKEN_OP_PARAM,
-
       name: data.param.name,
     };
 

@@ -16,7 +16,6 @@ export const AstGeneratorLiteralHandler: IAstGeneratorNodeHandler<
 
     const astExpression: IAstLiteral = {
       type: AST_TOKEN_LITERAL,
-
       value: data.literal,
     };
 

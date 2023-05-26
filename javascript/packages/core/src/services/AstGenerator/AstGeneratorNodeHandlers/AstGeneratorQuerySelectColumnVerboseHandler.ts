@@ -22,7 +22,6 @@ export const AstGeneratorQuerySelectColumnVerboseHandler: IAstGeneratorNodeHandl
 
     const astSelectColumn: IAstQuerySelectColumn = {
       type: AST_TOKEN_SELECT_COLUMN,
-
       as: data.as ?? null,
       value: astSelectColumnValue,
     };

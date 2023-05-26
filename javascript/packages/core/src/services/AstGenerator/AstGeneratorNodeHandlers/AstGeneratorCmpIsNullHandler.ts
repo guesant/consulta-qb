@@ -20,7 +20,6 @@ export const AstGeneratorCmpIsNullHandler: IAstGeneratorNodeHandler<
 
     const astExpression: IAstCmpIsNull = {
       type: AST_TOKEN_CMP_IS_NULL,
-
       value,
     };
 

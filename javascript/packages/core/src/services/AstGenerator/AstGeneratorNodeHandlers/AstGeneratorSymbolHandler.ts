@@ -16,7 +16,6 @@ export const AstGeneratorSymbolHandler: IAstGeneratorNodeHandler<
 
     const astExpression: IAstSymbol = {
       type: AST_TOKEN_SYMBOL,
-
       data: data.symbol,
     };
 

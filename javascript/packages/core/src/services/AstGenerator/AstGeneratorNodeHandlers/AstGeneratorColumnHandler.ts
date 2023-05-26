@@ -16,7 +16,6 @@ export const AstGeneratorColumnHandler: IAstGeneratorNodeHandler<
 
     const astExpression: IAstColumn = {
       type: AST_TOKEN_COLUMN,
-
       name: data.column.name,
       table: data.column.table ?? null,
     };
