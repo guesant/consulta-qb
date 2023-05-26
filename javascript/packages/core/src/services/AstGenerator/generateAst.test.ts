@@ -467,7 +467,8 @@ describe("generateAst()", () => {
 
     expect(generateAst(cmpOpNot)).toMatchInlineSnapshot(`
       {
-        "item": {
+        "type": "op_not",
+        "value": {
           "items": [
             {
               "name": "id",
@@ -481,7 +482,6 @@ describe("generateAst()", () => {
           ],
           "type": "cmp_eq",
         },
-        "type": "op_not",
       }
     `);
 
@@ -655,6 +655,7 @@ describe("generateAst()", () => {
           "joins": [
             {
               "as": "\\"user\\"",
+              "mode": "inner",
               "on": {
                 "items": [
                   {

@@ -67,6 +67,7 @@ export const AstGeneratorQuerySelectHandler: IAstGeneratorNodeHandler<
     const astSelectJoins: IAstQuerySelect["joins"] = joins.map((join) => {
       const astSelectJoin: IAstQuerySelectJoin = {
         type: AST_TOKEN_SELECT_JOIN,
+        mode: join.mode,
         table: join.table,
         as: join.as ?? join.table,
         on: generateAst(join.on) as IAstExpression,

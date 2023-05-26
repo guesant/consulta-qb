@@ -16,11 +16,11 @@ export const AstGeneratorOpNotHandler: IAstGeneratorNodeHandler<
   handle(opNotStructure) {
     const data = opNotStructure.data;
 
-    const item = generateAst(data.NOT) as IAstExpression;
+    const value = generateAst(data.NOT) as IAstExpression;
 
     const astExpression: IAstOpNot = {
       type: AST_TOKEN_OP_NOT,
-      item,
+      value: value,
     };
 
     return astExpression;
