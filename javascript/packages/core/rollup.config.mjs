@@ -1,53 +1,41 @@
-import { defineConfig } from 'rollup'
-import json from '@rollup/plugin-json';
-import typescript from '@rollup/plugin-typescript';
-import commonjs from '@rollup/plugin-commonjs';
-import { nodeResolve } from '@rollup/plugin-node-resolve';
-import pkg from "./package.json" assert { type: "json" }
+import commonjs from "@rollup/plugin-commonjs";
+import json from "@rollup/plugin-json";
+import { nodeResolve } from "@rollup/plugin-node-resolve";
+import typescript from "@rollup/plugin-typescript";
+import { defineConfig } from "rollup";
 import dts from "rollup-plugin-dts";
+import pkg from "./package.json" assert { type: "json" };
 
-const PLUGINS = [
-  json(),
-  commonjs(),
-  nodeResolve(),
-  typescript(),
-];
+const PLUGINS = [json(), commonjs(), nodeResolve(), typescript()];
 
-const EXTERNAL = [
-  ...Object.entries(pkg.dependencies)
-]
+const EXTERNAL = [...Object.entries(pkg.dependencies)];
 
 export default defineConfig([
   {
-    input: 'src/index.ts',
+    input: "src/index.ts",
     output: [
       {
-        file: 'dist/index.js',
-        format: 'cjs',
+        file: "dist/index.js",
+        format: "cjs",
+        sourcemap: true,
       },
-       {
-         file: 'dist/index.mjs',
-         format: 'esm'
-       }
+      {
+        file: "dist/index.mjs",
+        format: "esm",
+        sourcemap: true,
+      },
     ],
-    plugins: [
-      ...PLUGINS
-    ],
-    external: [
-      ...EXTERNAL
-    ]
+    plugins: [...PLUGINS],
+    external: [...EXTERNAL],
   },
   {
     input: "./src/index.ts",
     output: [
       {
         file: "dist/index.d.ts",
-        format: "es"
-      }
+        format: "es",
+      },
     ],
-    plugins: [
-      ...PLUGINS,
-      dts()
-    ],
+    plugins: [...PLUGINS, dts()],
   },
-])
+]);
